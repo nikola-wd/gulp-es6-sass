@@ -1,5 +1,12 @@
 'use strict';
 
+/**
+ * Tasks:
+ * gulp         run necessary taks for production deployment
+ * gulp --dev   build a more verbose output of dist for debugging
+ * gulp watch   watch app files for changes and run associated tasks
+ */
+
 const gulp = require('gulp');
 
 const gutil = require('gulp-util');
@@ -14,7 +21,9 @@ const cleanCSS = require('gulp-clean-css');
 
 const isProduction = !gutil.env.dev;
 
-/* ES/JS Tasks */
+/**
+ * ES/JS Tasks
+ */
 
 // Run ESLint on code.
 gulp.task('eslint', () => {
@@ -40,7 +49,9 @@ gulp.task('scripts', [
   'babel'
 ]);
 
-/* SASS/CSS Tasks */
+/**
+ * SASS/CSS Tasks
+ */
 
 gulp.task('sass', () => {
   return gulp.src('./app/styles/**/*.scss')
@@ -50,7 +61,9 @@ gulp.task('sass', () => {
     .pipe(gulp.dest('./dist/css/'));
 });
 
-/* Gulp Tasks */
+/**
+ * Gulp Tasks
+ */
 
 gulp.task('default', [
   'scripts',
