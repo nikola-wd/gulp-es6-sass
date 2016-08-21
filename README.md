@@ -8,3 +8,6 @@ Front-end boilerplate with ES6 and Sass support.
 - `gulp --dev` - build a more verbose output of dist for debugging.
 - `gulp watch` - watch app files for changes and run associated tasks.
 
+## Important
+
+The gulp copy task will copy anything you add to `./app/` to `./dist/`. If there is a new file or directory you do not want to copy, simply add the path to the `copyPaths` array in the gulpfile.
