@@ -2,11 +2,15 @@
 
 const gulp = require('gulp');
 
+const gutil = require('gulp-util');
 const concat = require('gulp-concat');
 const eslint = require('gulp-eslint');
 const babel = require('gulp-babel');
+const uglify = require('gulp-uglify');
 
 const sass = require('gulp-sass');
+
+const isProduction = !gutil.env.dev;
 
 /* ES/JS Tasks */
 
@@ -25,6 +29,7 @@ gulp.task('babel', () => {
       presets: ['es2015']
     }))
     .pipe(concat('app.js'))
+    .pipe(isProduction ? uglify() : gutil.noop())
     .pipe(gulp.dest('./dist/js/'));
 });
 
