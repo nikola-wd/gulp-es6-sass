@@ -2,7 +2,7 @@
 
 /**
  * Tasks:
- * gulp         run necessary taks for production deployment
+ * gulp         run necessary tasks for production deployment
  * gulp --dev   build a more verbose output of dist for debugging
  * gulp watch   watch app files for changes and run associated tasks
  */
