@@ -83,11 +83,23 @@ gulp.task('copy', () => {
  */
 
 gulp.task('default', [
-  'scripts',
   'sass',
+  'scripts',
   'copy'
 ]);
 
-gulp.task('watch', [
-  'scripts'
-]);
+const changeEvent = (e) => {
+  gutil.log('File', gutil.colors.cyan(e.path.replace(new RegExp('/.*(?=/app/)/'), '')), 'was', gutil.colors.magenta(e.type));
+};
+
+gulp.task('watch', () => {
+  gulp.watch('./app/styles/**.scss', ['sass']).on('change', (e) => {
+    changeEvent(e);
+  });
+  gulp.watch('./app/js/**.js', ['scripts']).on('change', (e) => {
+    changeEvent(e);
+  });
+  gulp.watch('./app/', {'base': './app/'}, ['copy']).on('change', (e) => {
+    changeEvent(e);
+  });
+});
