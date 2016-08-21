@@ -4,6 +4,7 @@ Front-end boilerplate with ES6 and Sass support.
 
 ## Tasks
 
-- `gulp` - build the front-end ready for deployment.
-- `gulp watch` - watch for changes in files and run associated tasks.
+- `gulp` - run necessary tasks for production deployment.
+- `gulp --dev` - uild a more verbose output of dist for debugging.
+- `gulp watch` - watch app files for changes and run associated tasks.
 
