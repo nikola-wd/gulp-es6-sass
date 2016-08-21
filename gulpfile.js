@@ -9,6 +9,8 @@ const babel = require('gulp-babel');
 const uglify = require('gulp-uglify');
 
 const sass = require('gulp-sass');
+const autoprefixer = require('gulp-autoprefixer');
+const cleanCSS = require('gulp-clean-css');
 
 const isProduction = !gutil.env.dev;
 
@@ -43,6 +45,8 @@ gulp.task('scripts', [
 gulp.task('sass', () => {
   return gulp.src('./app/styles/**/*.scss')
     .pipe(sass().on('error', sass.logError))
+    .pipe(autoprefixer())
+    .pipe(isProduction ? cleanCSS() : gutil.noop())
     .pipe(gulp.dest('./dist/css/'));
 });
 
