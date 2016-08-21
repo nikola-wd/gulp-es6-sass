@@ -10,4 +10,4 @@ Front-end boilerplate with ES6 and Sass support.
 
 ## Important
 
-The gulp copy task will copy anything you add to `./app/` to `./dist/`. If there is a new file or directory you do not want to copy, simply add the path to the `copyPaths` array in the gulpfile.
+When building, the gulp copy task will copy anything new inside `./app/` to `./dist/`. If there is a new file or directory you do not want to copy, simply add the path to the `copyPaths` array in the gulpfile.
