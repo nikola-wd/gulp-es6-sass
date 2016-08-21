@@ -62,12 +62,30 @@ gulp.task('sass', () => {
 });
 
 /**
+ * Copy Task
+ */
+
+const copyPaths = [
+  '!./app/styles/',
+  '!./app/styles/**',
+  '!./app/js/',
+  '!./app/js/**',
+  './app/**'
+];
+
+gulp.task('copy', () => {
+  return gulp.src(copyPaths)
+    .pipe(gulp.dest('./dist/'));
+});
+
+/**
  * Gulp Tasks
  */
 
 gulp.task('default', [
   'scripts',
-  'sass'
+  'sass',
+  'copy'
 ]);
 
 gulp.task('watch', [
