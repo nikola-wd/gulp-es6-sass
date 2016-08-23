@@ -93,13 +93,16 @@ const changeEvent = (e) => {
 };
 
 gulp.task('watch', () => {
-  gulp.watch('./app/styles/**.scss', ['sass']).on('change', (e) => {
+  gulp.watch('./app/styles/**/*.scss', ['sass'], (e) => {
     changeEvent(e);
   });
-  gulp.watch('./app/js/**.js', ['scripts']).on('change', (e) => {
+  gulp.watch('./app/js/**/*.js', ['scripts'], (e) => {
     changeEvent(e);
   });
-  gulp.watch('./app/', {'base': './app/'}, ['copy']).on('change', (e) => {
+  gulp.watch(['./app/**/*.html', './app/images/**/*'], (e) => {
     changeEvent(e);
+    gulp.src(e.path)
+      .pipe(gulp.dest('./dist'));
+    gutil.log('File', gutil.colors.cyan(e.path.replace(new RegExp('/.*(?=/app/)/'), '')), 'was', gutil.colors.magenta('copied'));
   });
 });
